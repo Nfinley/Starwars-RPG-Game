@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Star Wars RPG Game</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Materialize -->
+    <!-- Compiled and minified CSS -->
+    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css" crossorigin="anonymous"> -->
+    <!-- import google fonts -->
+    <!--  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P|Share+Tech+Mono|VT323" rel="stylesheet"> -->
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+
+<body>
+    <!-- Write out and code initial setup of page -->
+    <!-- Title Header -->
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 center-block">
+                    <h2> STAR WARS RPG GAME!!</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Took out container until get it to override -->
+    <div class="container-fluid gameplaySection">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                <!-- Select your champion header -->
+                <h4> Select Your Champion</h4>
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div id="characterList">
+                       <!--  <p> Luke </p>
+                        This is the row where the characters live initially before being chosen and be dynamically placed here
+                        <img src="assets/images/luke.jpg">
+                        <p> 180 </p> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                <!-- Select your enemy aligned right header -->
+                <h4> Enemies To Attack</h4>
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="enemyContainer enemyClick" id="enemyList">
+                        <!-- This is where your enemies will be dynamically updated after a selection is made in your character-->
+                        <p> Enemy list</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 center-block">
+                    <h3> Battle Zone! </h3>
+                </div>
+            </div>
+            <div class="row">
+                <!-- This is the Battle Area -->
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                    <p> Your Character</p>
+                    </div>
+                    <div id='yourCharacter characterContainer'>
+
+                    <!-- This is where your character will be dynamically updated -->
+                	</div>
+                <div class="col-sm-12 col-md-4 col-lg-4 ">
+                    <button class="waves-effect waves-light btn-danger btn-lg attackBtn"> Attack! </button>
+                    <!-- This is where the attack button goes -->
+                </div>
+                <div class="col-sm-12 col-md-4 col-md-4"> 
+                	<p> Your Opponent</p>
+                	<div id="yourEnemy">
+                    
+                    <!-- This is where your chosen enemy will be dynamically updated -->
+                    </div>
+                </div>
+            </div>
+    </div>
+        <!--Import jQuery before materialize.js-->
+        <!--     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+        <!-- Compiled and minified JavaScript  for Materialize-->
+        <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script> -->
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+        </script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="assets/javascript/game.js"></script>
+        <script type="text/javascript" src="assets/javascript/javascript.js"></script>
+        <!-- Created a background with scrolling images -->
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $.backstretch(['assets/images/bg-ship3.jpg', 'assets/images/bg-ship1.jpg', 'assets/images/bg-ship2.jpg', 'assets/images/bg-ship4.jpg', 'assets/images/bg-darth1.png', 'assets/images/bg-ship5.jpg'], {
+                duration: 10000,
+                fade: 900
+            });
+        });
+        </script>
+</body>
+
+</html>
