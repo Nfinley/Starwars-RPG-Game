@@ -28,7 +28,7 @@
     <header>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12 center-block">
+                <div class="col-sm-12 col-md-12 col-lg-12 text-center">
                     <h2> STAR WARS RPG GAME!!</h2>
                 </div>
             </div>
@@ -37,9 +37,9 @@
     <!-- Took out container until get it to override -->
     <div class="container-fluid gameplaySection">
         <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="col-sm-12 col-md-6 col-lg-6 text-center">
                 <!-- Select your champion header -->
-                <h4> Select Your Champion</h4>
+                <h4> Select Your Jedi</h4>
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <div id="characterList">
                        <!--  <p> Luke </p>
@@ -49,11 +49,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="col-sm-12 col-md-6 col-lg-6 text-center">
                 <!-- Select your enemy aligned right header -->
                 <h4> Enemies To Attack</h4>
                 <div class="col-sm-12 col-md-12 col-lg-12">
-                    <div class="enemyContainer enemyClick" id="enemyList">
+                    <div id="enemyList">
                         <!-- This is where your enemies will be dynamically updated after a selection is made in your character-->
                         <p> Enemy list</p>
                     </div>
@@ -62,28 +62,32 @@
         </div>
             <hr>
             <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12 center-block">
+                <div class="col-sm-12 col-md-12 col-lg-12 text-center">
                     <h3> Battle Zone! </h3>
                 </div>
             </div>
             <div class="row">
                 <!-- This is the Battle Area -->
-                <div class="col-sm-12 col-md-4 col-lg-4">
-                    <p> Your Character</p>
-                    </div>
-                    <div id='yourCharacter characterContainer'>
+                <div class="col-sm-12 col-md-14 col-lg-4 text-center">
+                    <p> Your Jedi!</p>
+                    <div class="col-sm-12 col-md-12 col-lg-12 ">
+                    	<div id="yourCharacter">
 
                     <!-- This is where your character will be dynamically updated -->
+                		</div>
                 	</div>
-                <div class="col-sm-12 col-md-4 col-lg-4 ">
-                    <button class="waves-effect waves-light btn-danger btn-lg attackBtn"> Attack! </button>
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-4 text-center">
+                    <button class="waves-effect waves-light btn-danger btn-lg attackBtn text-center"> Attack! </button>
                     <!-- This is where the attack button goes -->
                 </div>
-                <div class="col-sm-12 col-md-4 col-md-4"> 
+                <div class="col-sm-12 col-md-4 col-md-4 text-center"> 
                 	<p> Your Opponent</p>
-                	<div id="yourEnemy">
+                	<div class="col-sm-12 col-md-12 col-lg-12 ">
+                		<div id="yourEnemy">
                     
                     <!-- This is where your chosen enemy will be dynamically updated -->
+                    	</div>
                     </div>
                 </div>
             </div>
