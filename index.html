@@ -75,10 +75,11 @@
 
                     <!-- This is where your character will be dynamically updated -->
                 		</div>
+                		<div id="attackText"> </div>
                 	</div>
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-4 text-center">
-                    <button class="waves-effect waves-light btn-danger btn-lg attackBtn text-center"> Attack! </button>
+                    <button class="waves-effect waves-light btn-danger btn-lg attackBtn text-center" id="attackBtn"> Attack! </button>
                     <!-- This is where the attack button goes -->
                 </div>
                 <div class="col-sm-12 col-md-4 col-md-4 text-center"> 
@@ -92,6 +93,20 @@
                 </div>
             </div>
     </div>
+
+    <script type="text/template" id="characterTmpl">
+		<div class="characterContainer characterClick <%= background %>" data-character-index="<%= index %>">
+			<p><%= character.name %></p>
+			<img src="<%= character.visual %>">
+			<p><%= character.healthPoints %></p>
+		</div>
+    </script>
+        <script type="text/template" id="attackTmpl">
+		<div class="attackText">
+			You attacked <%= gameObj.currentEnemy.name %> for <%= gameObj.yourCurrentAttackPower %> damange! <br>
+			<%= gameObj.currentEnemy.name %> counter attacked damaging your health by <%= gameObj.currentEnemy.counterAttackPower %>  
+		</div>
+    </script>
         <!--Import jQuery before materialize.js-->
         <!--     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
         <!-- Compiled and minified JavaScript  for Materialize-->
@@ -99,6 +114,7 @@
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
         </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
