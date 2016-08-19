@@ -22,6 +22,7 @@ function reset() {
 		attackOccurred: false,
 		winOccurred: false,
 		lossOccurred: false,
+		wounded: false,
 		gameOver: false,
 		characterArrayList: [
 	    // 1.  An array or object of possible characters properties would incldue 
@@ -31,7 +32,7 @@ function reset() {
 	        name: 'Luke SkyWalker',
 	        visual: 'assets/images/luke.jpg',
 	        healthPoints: 160, 
-	        attackPower: 8,
+	        attackPower: 10,
 	        counterAttackPower: 20,
 	    },
 	    {
@@ -39,13 +40,13 @@ function reset() {
 	        visual: 'assets/images/yoda.jpg', 
 	        healthPoints: 130,
 	        attackPower: 15,
-	        counterAttackPower: 50,
+	        counterAttackPower: 30,
 	    },
 	    {
 	        name: 'Less Ray',
 	        visual: 'assets/images/lessray.jpg',
 	        healthPoints: 180, 
-	        attackPower: 5,
+	        attackPower: 7,
 	        counterAttackPower: 15,
 	    },
 	    {
@@ -59,13 +60,13 @@ function reset() {
 	        name: 'Kylo Wren',
 	        visual: 'assets/images/kylowren.jpg',
 	        healthPoints: 110,
-	        attackPower: 6,
-	        counterAttackPower: 15,
+	        attackPower: 12,
+	        counterAttackPower: 20,
 	    },
 	   	{
 	        name: 'Darth Maul',
 	        visual: 'assets/images/darthmaul.jpg',
-	        healthPoints: 75,
+	        healthPoints: 100,
 	        attackPower: 12,
 	        counterAttackPower: 24,
 	    }
@@ -146,6 +147,7 @@ $(document).ready(function() {
 		var $yourEnemy = $('#yourEnemy');
 		var $winText = $('#attackText');
 		var $lossText = $('#attackText');
+		// var $wounded = $('#attackText');
 		// var $gameOver = $('')
 		
 		// using underscore.js to create templates that are dynamically updated
@@ -153,7 +155,7 @@ $(document).ready(function() {
 		var $attackTemplate = _.template($('#attackTmpl').html());
 		var $winTemplate = _.template($('#winTmpl').html());
 		var $lossTemplate = _.template($('#lossTmpl').html());
-
+		// var $woundTemplate = 
 
 		// Haven't selected Character
 		var charHtml = "";
@@ -191,6 +193,9 @@ $(document).ready(function() {
 			// Displays loss text
 			$lossText.html($lossTemplate({gameObj: gameObj}));
 		}
+		if (gameObj.wounded){
+			$('#attackText').html("You are seriously wounded. GAME OVER!");
+		}
 
     }
 
@@ -226,6 +231,9 @@ $(document).ready(function() {
 		if (!gameObj.currentEnemy) {
 			// creates an array that houses the enemy character
 			gameObj.winOccurred = false;
+			// sets the attack button to false ensuring the attack text is not displayed when selecting a new character and only after 
+			// ...click attack
+			gameObj.attackOccurred = false;
     		gameObj.currentEnemy = gameObj.characterArrayList.splice(charIndex, 1)[0];
     	}
     	// This renders and updates all of the html elements 
@@ -265,7 +273,7 @@ $(document).ready(function() {
 
     	
     	// Win scenario
-    	// set win variable in order to consolidate win ifs. 
+    	// set win variable  and loss in order to consolidate win ifs. 
     	var win = (currentEnemy.healthPoints < -1 && yourCharacter.healthPoints > 0 || 
     				((yourCharacter.healthPoints < -1 && currentEnemy.healthPoints < -1) && 
     				(yourCharacter.healthPoints > currentEnemy.healthPoints))
@@ -281,19 +289,26 @@ $(document).ready(function() {
 			if (gameObj.characterArrayList.length > -1){
 				console.log(gameObj.characterArrayList.length);
 				gameObj.winOccurred = true;
-				//look for a different way to accomplish this
-				// $('#attackBtn').off(""); 
+
 				// need to be able to select another enemy
 				gameObj.lastOpponent = gameObj.currentEnemy;
 				gameObj.currentEnemy = null;
-				
+				// need to figure out how to show another error when your character points are less 0. Show error "you are seriously wounded. GAME OVER"
+					// if (yourCharacter.healthPoints =< 0) {
+					// 	gameObj.wounded = true;
+					// 	// gameObj.winOccurred = false;
+
+					// }
 	 		
 			}  
+			// scenario when you have defeated all characters
 			else if (gameObj.characterArrayList.length == -1){
 				gameObj.gameOver = true;
+				gameObj.winOccurred = false;
 				// write game over wording
 				// need to add a reset button
 				// Make a reset button and make it equal to the reset function
+				// Need to figure out why when a new enemy is clicked the second time it automatically sets the the attack wording
 
 			}  
 
