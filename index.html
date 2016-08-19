@@ -12,18 +12,14 @@
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- Materialize -->
-    <!-- Compiled and minified CSS -->
-    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css" crossorigin="anonymous"> -->
-    <!-- import google fonts -->
-    <!--  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P|Share+Tech+Mono|VT323" rel="stylesheet"> -->
+
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
 <body>
-    <!-- Write out and code initial setup of page -->
+<div  id='wrap'>
     <!-- Title Header -->
     <header>
         <div class="container-fluid">
@@ -36,6 +32,40 @@
     </header>
     <!-- Took out container until get it to override -->
     <div class="container-fluid gameplaySection">
+                <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                    <h3> Battle Zone! </h3>
+                </div>
+            </div>
+            <div class="row">
+                <!-- This is the Battle Area -->
+                <div class="col-sm-12 col-md-14 col-lg-4 text-center">
+                    <h2> Your Jedi!</h2>
+                    <div class="col-sm-12 col-md-12 col-lg-12 ">
+                    <!-- When you choose your character this is where it is pushed to -->
+                    	<div id="yourCharacter">
+
+                    <!-- This is where your character will be dynamically updated -->
+                		</div>
+                		<!-- This the area where the text gets updated as you play the game -->
+                		<div id="attackText"> </div>
+                	</div>
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-4 text-center">
+                   <!-- This is the attack button -->
+                    <button class="waves-effect waves-light btn-danger btn-lg attackBtn text-center" id="attackBtn"> Attack! </button>
+                 
+                </div>
+                <div class="col-sm-12 col-md-4 col-md-4 text-center"> 
+                	<h2> Your Opponent</h2>
+                	<div class="col-sm-12 col-md-12 col-lg-12 ">
+                		 <!-- This is where your chosen enemy will be dynamically updated -->
+                		<div id="yourEnemy">
+                    	</div>
+                    </div>
+                </div>
+            </div>
+            <hr>  
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6 text-center">
                 <!-- Select your champion header -->
@@ -60,40 +90,12 @@
                 </div>
             </div>
         </div>
-            <hr>
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-                    <h3> Battle Zone! </h3>
-                </div>
-            </div>
-            <div class="row">
-                <!-- This is the Battle Area -->
-                <div class="col-sm-12 col-md-14 col-lg-4 text-center">
-                    <p> Your Jedi!</p>
-                    <div class="col-sm-12 col-md-12 col-lg-12 ">
-                    	<div id="yourCharacter">
-
-                    <!-- This is where your character will be dynamically updated -->
-                		</div>
-                		<div id="attackText"> </div>
-                	</div>
-                </div>
-                <div class="col-sm-12 col-md-4 col-lg-4 text-center">
-                    <button class="waves-effect waves-light btn-danger btn-lg attackBtn text-center" id="attackBtn"> Attack! </button>
-                    <!-- This is where the attack button goes -->
-                </div>
-                <div class="col-sm-12 col-md-4 col-md-4 text-center"> 
-                	<p> Your Opponent</p>
-                	<div class="col-sm-12 col-md-12 col-lg-12 ">
-                		<div id="yourEnemy">
-                    
-                    <!-- This is where your chosen enemy will be dynamically updated -->
-                    	</div>
-                    </div>
-                </div>
-            </div>
     </div>
 
+	<div id="push"> </div>
+</div>
+<div id="footer">
+</div>
     <script type="text/template" id="characterTmpl">
 		<div class="characterContainer characterClick <%= background %>" data-character-index="<%= index %>">
 			<p><%= character.name %></p>
@@ -103,14 +105,27 @@
     </script>
         <script type="text/template" id="attackTmpl">
 		<div class="attackText">
-			You attacked <%= gameObj.currentEnemy.name %> for <%= gameObj.yourCurrentAttackPower %> damange! <br>
-			<%= gameObj.currentEnemy.name %> counter attacked damaging your health by <%= gameObj.currentEnemy.counterAttackPower %>  
+			You attacked <%= gameObj.currentEnemy ? gameObj.currentEnemy.name : gameObj.lastOpponent.name %> for <%= gameObj.yourCurrentAttackPower %> damange! <br>
+			<% if (gameObj.currentEnemy) { %>
+				<%= gameObj.currentEnemy.name %> counter attacked damaging your health by <%= gameObj.currentEnemy.counterAttackPower %>  
+			<% } %>
 		</div>
     </script>
-        <!--Import jQuery before materialize.js-->
-        <!--     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
-        <!-- Compiled and minified JavaScript  for Materialize-->
-        <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script> -->
+    <script type="text/template" id="winTmpl">
+		<div class="attackText">
+			You have defeated <%= lastOpponent.name %> , choose another enemy to fight! 
+		</div>
+    </script>
+       <script type="text/template" id="lossTmpl">
+		<div class="attackText">
+			<%= gameObj.currentEnemy.name %>  has defeated you! Game Over!!
+		</div>
+    </script>
+
+
+
+    
+
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
         </script>
@@ -123,7 +138,7 @@
         <!-- Created a background with scrolling images -->
         <script type="text/javascript">
         $(document).ready(function() {
-            $.backstretch(['assets/images/bg-ship3.jpg', 'assets/images/bg-ship1.jpg', 'assets/images/bg-ship2.jpg', 'assets/images/bg-ship4.jpg', 'assets/images/bg-darth1.png', 'assets/images/bg-ship5.jpg'], {
+            $.backstretch(['assets/images/bg-ship4.jpg', 'assets/images/bg-darth1.png','assets/images/darth2.jpg'], {
                 duration: 10000,
                 fade: 900
             });

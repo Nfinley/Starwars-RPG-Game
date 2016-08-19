@@ -3,7 +3,21 @@ body {
 	color: white;
 
 
-},
+}
+
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -60px;
+
+ }
+
+
+ #push, #footer {
+    height: 60px;
+}
+
 
 /*Classes available*/
 
@@ -31,7 +45,8 @@ body {
 }
 
 .bg-red {
-	background-color: blue;
+	background-color: #ce2121;
+
 	
 }
 
@@ -41,7 +56,7 @@ body {
 }
 
 .bg-black {
-	background-color: black;
+	background-color: grey;
 
 }
 
@@ -60,7 +75,7 @@ body {
 
 
 .characterContainer p, .enemyContainer p {
-	color: red;
+	color: black;
 	text-align: center;
 
 }
