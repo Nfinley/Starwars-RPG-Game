@@ -3,15 +3,15 @@
 
 //  1. LOOK at the following class excersises to help with this: Captain planet (animate and putting stuff on screen - bootstrap buttons)
 // ...also the fridge game for data let to pass letters and the crystal game to assign numbers and use counters. Also calculator game from 4.3
-//  2. Remove $ signs
+//  2. 
 // 3. re-write some in jQuery
 // 4. add the 'No enemy here' text when attack button is clicked
-// 5. Add reset button when game is over and when loss occurs
+// 5. Add reset button when game is over and when loss occurs, update the HMTL to have spaces below the button
 // 6. figure out how to implement the  'wounded' piece
-// 7. Make character and enemey list display span horizontal across the screen
 // 8.  Check line 317 and 214 for the game over properties to make sure they work
-// 9. Check my modal piece works on line 150 and check html
+
 // 10. Look at doing a static pic
+
 
 // Improvements to make
 // Update the images to not show the background colors and spread across entire div
@@ -172,6 +172,9 @@ $(document).ready(function() {
 
 		// Haven't selected Character
 		var charHtml = "";
+		$yourCharacter.html("");
+		$yourEnemy.html("");
+
 		// using a ternary operator to give true or false to the background color choice
 		var listBg = gameObj.yourCharacter ? "bg-black" : "bg-white";
 		// Sets the initial screen with characters to select from
@@ -183,6 +186,7 @@ $(document).ready(function() {
 			// re-write in jQuery
 			$enemyList.html(charHtml);
 			$charList.html("");
+
 		} else {
 			// re-write in jQuery
 			$charList.html(charHtml);
@@ -202,9 +206,10 @@ $(document).ready(function() {
 			// Removes the enemy character after you win.
 			$('#yourEnemy').empty(gameObj.currentEnemy);
 		}
+		// NOT WORKING
 		if (gameObj.attackOccurred = false) {
 			$('#attackText').html("No enemy to fight, select an enemy");
-			// 5. If user continues to press attack button it displays the text "No enemy to fight, select an enemy."
+			//If user continues to press attack button it displays the text "No enemy to fight, select an enemy."
 		}
 		if (gameObj.lossOccurred) {
 			// Displays loss text
@@ -217,12 +222,13 @@ $(document).ready(function() {
 		if (gameObj.gameOver) {
 			// creates the reset button to start the game over
 			var b = $('<button>');
-			b.addClass('btn-primary waves-effect waves-light btn-md');
+			b.addClass('btn-primary waves-effect waves-light btn-lg');
+			b.html('Battle Again!');
+			reset();
+
+			b.click(render);
 			$('#gameOver').append(b);
-		// 	$('#gameOver').on('click', function({
-		// 		reset();
-		// 	});
-		// }
+
 		}
 
     }
@@ -302,13 +308,13 @@ $(document).ready(function() {
     	
     	// Win scenario
     	// set win variable  and loss in order to consolidate win ifs. 
-    	var win = (currentEnemy.healthPoints < -1 && yourCharacter.healthPoints > 0 || 
-    				((yourCharacter.healthPoints < -1 && currentEnemy.healthPoints < -1) && 
+    	var win = (currentEnemy.healthPoints < 1 && yourCharacter.healthPoints > 1 || 
+    				((yourCharacter.healthPoints < 1 && currentEnemy.healthPoints < 1) && 
     				(yourCharacter.healthPoints > currentEnemy.healthPoints))
     			  ) ? true : false;
-
-    	var loss = (yourCharacter.healthPoints < -1 && currentEnemy.healthPoints > 0 || 
-    				((yourCharacter.healthPoints < -1 && currentEnemy.healthPoints < -1) && 
+// greater
+    	var loss = (yourCharacter.healthPoints < 1 && currentEnemy.healthPoints > 1 || 
+    				((yourCharacter.healthPoints < 1 && currentEnemy.healthPoints < 1) && 
     					(yourCharacter.healthPoints < currentEnemy.healthPoints))
     			   ) ? true: false;
     	

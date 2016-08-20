@@ -82,7 +82,7 @@
         <hr>
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-                    <h3> Battle Zone! </h3>
+                    <h2> Battle Zone! </h2>
                 </div>
             </div>
             <div class="row">
@@ -95,10 +95,6 @@
 
                     <!-- This is where your character will be dynamically updated -->
                 		</div>
-                		<!-- This the area where the text gets updated as you play the game -->
-                		<div id="attackText"> </div>
-                		<!-- using this tag to create a button and use it to reset -->
-                		<div id="gameOver"></div>
                 	</div>
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-4 text-center">
@@ -115,6 +111,20 @@
                     </div>
                 </div>
             </div>
+            <!-- Houses the attack and game over text -->
+            <div class="row">
+            <div class="col-sm-12 col-md-3 col-lg-3"></div>
+                <div class="col-sm-12 col-md-6 col-lg-6 text-center">
+                                            <!-- This the area where the text gets updated as you play the game -->
+                        <div id="attackText"> </div>
+                        <!-- using this tag to create a button and use it to reset -->
+                        <br>
+                        <div id="gameOver">
+                      <!-- <button> </button>   -->    
+                        </div>
+                </div>
+                 <div class="col-sm-12 col-md-3 col-lg-3"></div>
+            </div>
     </div>
 
 	<div id="push"> </div>
@@ -125,7 +135,7 @@
 		<div class="characterContainer characterClick <%= background %>" data-character-index="<%= index %>">
 			<p><%= character.name %></p>
 			<img src="<%= character.visual %>">
-			<p><%= character.healthPoints %></p>
+			<p>HP: <%= character.healthPoints %></p>
 		</div>
     </script>
         <script type="text/template" id="attackTmpl">
