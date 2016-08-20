@@ -11,13 +11,13 @@ body {
 
 
 }
-@font-face {
-	font-family: STJEDISE;
+/*@font-face {
+	font-family: "STJEDISE";
 	src: url(star_jedi/stjedise/STJEDISE.TTF);
 }
 h1 {
 	font-family: STJEDISE;
-}
+}*/
 .modal-body {
 	color: black;
 }
