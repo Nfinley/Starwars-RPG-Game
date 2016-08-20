@@ -5,6 +5,8 @@
 // 4. add the 'No enemy here' text when attack button is clicked
 // 6. figure out how to implement the  'wounded' piece
 // -Look at changing the font to more readable
+// Add bootstrap class to change the hover state of characters
+// makeimg bigger to strecth entire character and make text white
 
 
 
@@ -33,6 +35,7 @@ function reset() {
 		lossOccurred: false,
 		wounded: false,
 		gameOver: false,
+		jediMaster: false,
 		characterArrayList: [
 	    // 1.  An array or object of possible characters properties would incldue 
 	    // name, picture, Health Points, Attack Power and counter attack power
@@ -145,6 +148,8 @@ $(document).ready(function() {
 	 audioElement.autoplay = true;
 	 audioElement.loop = true;
      audioElement.setAttribute('src', 'assets/audio/starwars.m4a');
+
+     // displays the modal
   	$('#myModal').modal('show');
 
 	function render() {
@@ -158,13 +163,15 @@ $(document).ready(function() {
 		var $winText = $('#attackText');
 		var $lossText = $('#attackText');
 		// var $wounded = $('#attackText');
-		var $gameOver = $('#gameOver')
+		var $gameOver = $('#gameOver');
+		var $jediText = $('#attackText');
 		
 		// using underscore.js to create templates that are dynamically updated
 		var $charTemplate = _.template($('#characterTmpl').html());
 		var $attackTemplate = _.template($('#attackTmpl').html());
 		var $winTemplate = _.template($('#winTmpl').html());
 		var $lossTemplate = _.template($('#lossTmpl').html());
+		var $jediTemplate = _.template($('#jediTmpl').html());
 		// var $woundTemplate = 
 
 		// Haven't selected Character
@@ -214,10 +221,11 @@ $(document).ready(function() {
 			// Displays loss text
 			$lossText.html($lossTemplate({gameObj: gameObj}));
 		}
+		// This runs when the enemy is wounded (hp less than zero)
 		if (gameObj.wounded){
 			$('#attackText').html("You are seriously wounded. GAME OVER!");
 		}
-		// Update this to show correc wording and make sure it works
+		// This runs if the user losses
 		if (gameObj.gameOver) {
 			// creates the reset button to start the game over
 			var b = $('<button>');
@@ -228,6 +236,20 @@ $(document).ready(function() {
 			b.click(render);
 			$('#gameOver').append(b);
 
+		}
+		if (gameObj.jediMaster) {
+			// Displays final text 
+			$jediText.html($jediTemplate({lastOpponent: gameObj.lastOpponent}));
+			$('#yourEnemy').empty(gameObj.currentEnemy);
+			// creates the reset button to start the game over
+			var b = $('<button>');
+			b.addClass('btn-primary waves-effect waves-light btn-lg');
+			b.html('Battle Again!');
+			reset();
+
+			b.click(render);
+			$('#gameOver').append(b);
+			
 		}
 
     }
@@ -316,10 +338,15 @@ $(document).ready(function() {
     				((yourCharacter.healthPoints < 1 && currentEnemy.healthPoints < 1) && 
     					(yourCharacter.healthPoints < currentEnemy.healthPoints))
     			   ) ? true: false;
-    	
+
+
+    	// duplicate win section to test new
+    	// WIN Section
+    	// First if is only if user has defeated all of the enemies    	
     	if (win) { 
+    		
     		console.log('healthPoints of enemy should be equal great than or eqaul to 0: ' + currentEnemy.healthPoints);
-			if (gameObj.characterArrayList.length > -1){
+			if (gameObj.characterArrayList.length > 0){
 				console.log(gameObj.characterArrayList.length);
 				gameObj.winOccurred = true;
 
@@ -335,11 +362,17 @@ $(document).ready(function() {
 	 		
 			}  
 			// scenario when you have defeated all characters
-			else if (gameObj.characterArrayList.length == -1){
-				gameObj.gameOver = true;
-				// gameObj.winOccurred = false;
-				$('#attackText').html("You are now a true Jedi Master! May the FORCE be with YOU! GAME OVER!! ");
-				// test game over writing
+			else if (gameObj.characterArrayList.length == 0){
+
+				console.log('Final Jedi Portion ' + gameObj.characterArrayList.length);
+				gameObj.lastOpponent = gameObj.currentEnemy;
+				gameObj.attackOccurred = false; 
+				gameObj.jediMaster = true;
+				
+	
+				
+				// $('#attackText').html("You are now a true Jedi Master! May the FORCE be with YOU! GAME OVER!! ");
+				
 				// Need to figure out why when a new enemy is clicked the second time it automatically sets the the attack wording
 
 			}  
