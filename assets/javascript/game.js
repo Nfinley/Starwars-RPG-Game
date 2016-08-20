@@ -1,16 +1,13 @@
 // Author: Nigel Finley. August 2016. UT BOOTCAMP HW Assignment
 
 
-//  1. LOOK at the following class excersises to help with this: Captain planet (animate and putting stuff on screen - bootstrap buttons)
-// ...also the fridge game for data let to pass letters and the crystal game to assign numbers and use counters. Also calculator game from 4.3
-//  2. 
-// 3. re-write some in jQuery
-// 4. add the 'No enemy here' text when attack button is clicked
-// 5. Add reset button when game is over and when loss occurs, update the HMTL to have spaces below the button
-// 6. figure out how to implement the  'wounded' piece
-// 8.  Check line 317 and 214 for the game over properties to make sure they work
 
-// 10. Look at doing a static pic
+// 4. add the 'No enemy here' text when attack button is clicked
+// 6. figure out how to implement the  'wounded' piece
+// -Look at changing the font to more readable
+
+
+
 
 
 // Improvements to make
@@ -161,7 +158,7 @@ $(document).ready(function() {
 		var $winText = $('#attackText');
 		var $lossText = $('#attackText');
 		// var $wounded = $('#attackText');
-		// var $gameOver = $('')
+		var $gameOver = $('#gameOver')
 		
 		// using underscore.js to create templates that are dynamically updated
 		var $charTemplate = _.template($('#characterTmpl').html());
@@ -174,6 +171,8 @@ $(document).ready(function() {
 		var charHtml = "";
 		$yourCharacter.html("");
 		$yourEnemy.html("");
+		$attackText.html("");
+		$gameOver.html("");
 
 		// using a ternary operator to give true or false to the background color choice
 		var listBg = gameObj.yourCharacter ? "bg-black" : "bg-white";
@@ -338,7 +337,7 @@ $(document).ready(function() {
 			// scenario when you have defeated all characters
 			else if (gameObj.characterArrayList.length == -1){
 				gameObj.gameOver = true;
-				gameObj.winOccurred = false;
+				// gameObj.winOccurred = false;
 				$('#attackText').html("You are now a true Jedi Master! May the FORCE be with YOU! GAME OVER!! ");
 				// test game over writing
 				// Need to figure out why when a new enemy is clicked the second time it automatically sets the the attack wording
@@ -354,7 +353,7 @@ $(document).ready(function() {
     		console.log('Entered the loss occurred section');
     		gameObj.attackOccurred = false; 
     		gameObj.gameOver = true; 
-    		// set reset button
+    		
     	}
     	render();
 
