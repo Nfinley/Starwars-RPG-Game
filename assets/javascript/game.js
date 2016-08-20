@@ -2,30 +2,7 @@
 
 
 
-// 4. add the 'No enemy here' text when attack button is clicked
-// 6. figure out how to implement the  'wounded' piece
-// -Look at changing the font to more readable
-// Add bootstrap class to change the hover state of characters
-// makeimg bigger to strecth entire character and make text white
-
-
-
-
-
-// Improvements to make
-// Update the images to not show the background colors and spread across entire div
-// change text color to white and bold and then overlay over the image
-// change the positioning so that it flows better
-
-
-// Variables
-
 // Overall game is stored in object
-
-
-// Initialize the attack btn to false so it cannot be clicked until true
-// var attackBtn = false;
-// 
 // game play object houses all functions  and additional variables of the game
 function reset() {
 	window.gameObj = {
@@ -82,20 +59,20 @@ function reset() {
 	        attackPower: 12,
 	        counterAttackPower: 24,
 	    }
-	   //     {
-	   //      name: 'Obi-Wan Kanobi',
-	   //      visual: 'assets/images/obiwan.jpg',
-	   //      healthPoints: 120, 
-	   //      attackPower: 10, 
-	   //      counterAttackPower: 24,
-	   //  	},
+	    //    {
+	    //     name: 'Obi-Wan Kanobi',
+	    //     visual: 'assets/images/obiwan.jpg',
+	    //     healthPoints: 120, 
+	    //     attackPower: 10, 
+	    //     counterAttackPower: 24,
+	    // 	},
 	    //  {
 	    //     name: 'Boba Fett',
 	    //     visual: 'assets/images/bobafett.jpg',
 	    //     healthPoints: 90,
 	    //     attackPower: 25,
 	    //     counterAttackPower: 26,
-	    // },
+	    // }
 		],
 		// Initializes game start true
 		gameStart: true,
@@ -116,28 +93,9 @@ function reset() {
 		battleSoundPick: function() {
 	        return this.battleSoundsArray[Math.floor(Math.random() * this.battleSoundsArray.length)];
 	    },
-//  		selectEnemy: function(){
-//     		$('#enemyList').on('click', '.characterContainer', function(e) {
-//     		var element = $(this);
-//     		var charIndex = element.data('character-index');
-//     		// current enemy was initially set as null so when your enemy != this if runs 
-// 			if (!gameObj.currentEnemy) {
-// 			// creates an array that houses the enemy character
-//     		gameObj.currentEnemy = gameObj.characterArrayList.splice(charIndex, 1)[0];
-//     	}
-//     	// This renders and updates all of the html elements 
-//     	render();
-//     	// adds a sound to selecting character
-//     	// var $audioCharacter = document.createElement('audio');
-//      //                $audioCharacter.setAttribute('src', gameObj.characherSelectSound);
-//      //                $audioCharacter.play();
-//     });
-// }
 
 	}
 };
-
-
 
 
 // STAGE 1: Initial Setup/ Display
@@ -194,7 +152,6 @@ $(document).ready(function() {
 			$charList.html("");
 
 		} else {
-			// re-write in jQuery
 			$charList.html(charHtml);
 			$enemyList.html("");
 		}
@@ -324,7 +281,7 @@ $(document).ready(function() {
                     $audioBattle.setAttribute('src', gameObj.battleSoundPick());
                     $audioBattle.play();
                     
-    	// STARTED HERE
+
 
     	
     	// Win scenario
@@ -333,15 +290,14 @@ $(document).ready(function() {
     				((yourCharacter.healthPoints < 1 && currentEnemy.healthPoints < 1) && 
     				(yourCharacter.healthPoints > currentEnemy.healthPoints))
     			  ) ? true : false;
-// greater
+
     	var loss = (yourCharacter.healthPoints < 1 && currentEnemy.healthPoints > 1 || 
     				((yourCharacter.healthPoints < 1 && currentEnemy.healthPoints < 1) && 
     					(yourCharacter.healthPoints < currentEnemy.healthPoints))
     			   ) ? true: false;
 
 
-    	// duplicate win section to test new
-    	// WIN Section
+    
     	// First if is only if user has defeated all of the enemies    	
     	if (win) { 
     		
@@ -368,12 +324,6 @@ $(document).ready(function() {
 				gameObj.lastOpponent = gameObj.currentEnemy;
 				gameObj.attackOccurred = false; 
 				gameObj.jediMaster = true;
-				
-	
-				
-				// $('#attackText').html("You are now a true Jedi Master! May the FORCE be with YOU! GAME OVER!! ");
-				
-				// Need to figure out why when a new enemy is clicked the second time it automatically sets the the attack wording
 
 			}  
 				
@@ -391,27 +341,7 @@ $(document).ready(function() {
     	render();
 
     });
-			// 4. Add attack button Audio for each click (look at capitain planet example and look at hangman to pull a random sound from the battle sounds array)
-			// 5. User continues to press Attack Button until either you or your enemies HP is equal to or less than 0
-			// 6. Win Scenario: Occurs when your enemy health points are < = 0(first part of if)
-					// if(yourEnemyObj.healthPoints <= 0 ){}
-						// Actions based on this: 
-						 // 1. remove defender image from page using .empty() and also remove this enemy from enemy array so it can't be selected again (use code from hangman game)
-						 // 2. Display the game text (#gameAttackText) using .html,"You have defeated " + yourEnemyObj.name + ", choose another enemy to fight!"
-						 // 3. Reset enemy yourEnemyObj; to allow to user allow user to click new enemy, this would take back to initial game.3
-						 // 4. Add win audio under this scenario
-						 // 5. If user continues to press attack button it displays the text "No enemy to fight, select an enemy."
-						//  4. IF there are no enemies left game is over and user has WON whole game (if (enimiesArray == -1))
-								// Actions: 
-									// 1. Play win sound (or not)
-									// 2. Display text You Won!! The FORCE is with you! GAME OVER!!
-									// 3. Dynamically display a 'Batle Again!' button which resets the game to its original display state
 
-			// 	7. Loss Scenario: occurs when your health points is < = 0
-					// else if (yourCharacterObj.healthPoints <= 0)
-						// Actions: 
-							// 1. Display text " yourEnemyArray.name + "has defeated you! Game Over! 
-							// 2. Dynamically display a 'Batle Again!' button which resets the game to its original display state
 			
 
     render();
@@ -419,75 +349,5 @@ $(document).ready(function() {
 });
 
 
-	// 1. Display all characters available on the top of the screen
-	/*
-		var object = {
-			array: gamePlayObj.characterArrayList,
-			yourCharacterId: 'characterList',
-			background: 'bg-white'
-		 }
-		
-		//gamePlayObj.loopThroughChar(object);
-		*/
-
-
-	// First select character
-	/*
-	$(document.body).on('click', 'div.characterContainer', function(element){
-
-	// $('.characterList div.characterContainer').on('click', function(event){
-		// needs to select the object from the array and then store it in the yourCharacter array
-		// grab id and save as value
-		var index = $(this).attr('id');
-		console.log("Returns the index value of character clicked: " + index); 
-
-		// this pushes the user click to your character array
-		gamePlayObj.yourCharacter.push(gamePlayObj.characterArrayList[index]);
-		// logs the values in the object
-		console.log("The your character array contents are: " + JSON.stringify(gamePlayObj.yourCharacter));
-		
-		// reseting properties to be passed through the loop function to set your character
-		var object = {
-			array: gamePlayObj.yourCharacter,
-			yourCharacterId: 'yourCharacter',
-			background: 'bg-white'
-		 }
-		
-		//gamePlayObj.loopThroughChar(object);
-
-		console.log("This moved the object: " + JSON.stringify(gamePlayObj.yourCharacter) + "to your character section" );
-		// removes the other selections from the screen
-		$('#characterList').empty();
-
-		// remove the clicked character from character array
-		gamePlayObj.characterArrayList.splice(index, 1);
-		console.log(typeof index);
-		console.log("character array should have been altered! It is now: " + gamePlayObj.characterArrayList);
-
-		// creates the enemy array
-		gamePlayObj.yourEnemy = gamePlayObj.characterArrayList;
-		console.log("enemy array should should now contain content. It is now: " + gamePlayObj.characterArrayList);
-
-		var object = {
-			array: gamePlayObj.yourEnemy,
-			yourCharacterId: 'enemyList',
-			background: 'bg-black'
-		 }
-		
-		//gamePlayObj.loopThroughChar(object);
-		// need to update the attributes to update
-
-		// Need to set up if statement to say 
-
-		// gamePlayObj.gameStart == false;
-		// figure out how to stop appending 
-
-
-		// document.getElementById('characterArrayList').innerHTML = '#yourCharacter'
-		// then needs to take remaining characters and display them in the enemies section
-
-
-	});
-	*/
 
 
