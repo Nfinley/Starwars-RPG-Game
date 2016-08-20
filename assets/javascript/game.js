@@ -2,6 +2,22 @@
 
 
 
+// 4. add the 'No enemy here' text when attack button is clicked
+// 6. figure out how to implement the  'wounded' piece
+// -Look at changing the font to more readable
+// Add bootstrap class to change the hover state of characters
+// makeimg bigger to strecth entire character and make text white
+
+
+
+
+
+// Improvements to make
+// Update the images to not show the background colors and spread across entire div
+// change text color to white and bold and then overlay over the image
+// change the positioning so that it flows better
+
+
 // Overall game is stored in object
 // game play object houses all functions  and additional variables of the game
 function reset() {
@@ -89,6 +105,7 @@ function reset() {
 	// create an array of battle sounds
 		battleSoundsArray: ['assets/audio/saberclash.mp3', 'assets/audio/saberclash1.mp3', 'assets/audio/saberclash2.mp3', 'assets/audio/saberclash3.mp3', 'assets/audio/saberclash4.mp3', 'assets/audio/saberclash5.mp3', 'assets/audio/saberclash6.mp3', 'assets/audio/spin1.mp3', 'assets/audio/spin2.mp3','assets/audio/spin3.mp3','assets/audio/spin4.mp3','assets/audio/spin5.mp3','assets/audio/spin6.mp3', 'assets/audio/swing1.mp3','assets/audio/swing2.mp3', ],
 		characherSelectSound: 'assets/audio/saberon.mp3',
+
 	// picks at random battle sound when the attack button is pressed
 		battleSoundPick: function() {
 	        return this.battleSoundsArray[Math.floor(Math.random() * this.battleSoundsArray.length)];
@@ -169,11 +186,7 @@ $(document).ready(function() {
 			// Removes the enemy character after you win.
 			$('#yourEnemy').empty(gameObj.currentEnemy);
 		}
-		// NOT WORKING
-		if (gameObj.attackOccurred = false) {
-			$('#attackText').html("No enemy to fight, select an enemy");
-			//If user continues to press attack button it displays the text "No enemy to fight, select an enemy."
-		}
+
 		if (gameObj.lossOccurred) {
 			// Displays loss text
 			$lossText.html($lossTemplate({gameObj: gameObj}));
@@ -261,6 +274,7 @@ $(document).ready(function() {
     $('#attackBtn').on('click', function(e) {
     	// this ensure you cannot click any other characters again
     	if (!gameObj.yourCharacter || !gameObj.currentEnemy) {
+    		$('#attackText').html('No enemy here, select an emeny to fight.')
     		return;
     	}
     	

@@ -142,7 +142,7 @@
 		<div class="attackText">
 			You attacked <%= gameObj.currentEnemy ? gameObj.currentEnemy.name : gameObj.lastOpponent.name %> for <%= gameObj.yourCurrentAttackPower %> damange! <br>
 			<% if (gameObj.currentEnemy) { %>
-				<%= gameObj.currentEnemy.name %> counter attacked damaging your health by <%= gameObj.currentEnemy.counterAttackPower %>  
+				<%= gameObj.currentEnemy.name %> counter attacked damaging your health by <%= gameObj.currentEnemy.counterAttackPower %>.  
 			<% } %>
 		</div>
     </script>
@@ -180,7 +180,7 @@
         <!-- Created a background with scrolling images -->
         <script type="text/javascript">
         $(document).ready(function() {
-            $.backstretch(['assets/images/bg-ship4.jpg', 'assets/images/darth4.jpg','assets/images/plane1.jpg', 'assets/images/plane2.jpg', 'assets/images/bg-kylo.jpg'], {
+            $.backstretch(['assets/images/bg-kylo.jpg', 'assets/images/bg-ship4.jpg', 'assets/images/darth4.jpg','assets/images/plane1.jpg', 'assets/images/plane2.jpg'], {
                 duration: 10000,
                 fade: 900
             });
