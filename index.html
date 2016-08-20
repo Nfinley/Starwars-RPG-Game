@@ -19,27 +19,75 @@
 </head>
 
 <body>
+<!-- Starting Modal -->
+<div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-center">Welcome to the Star Wars Jedi battle grounds. </h4>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">The universe is no longer safe and it is every Jedi for themselves. </p> 
+                    <p> Select your Jedi and then select your first enemy to begin. Battle you opponent by clicking the 'attack' button. Choose wisely or it may be your last battle!</p><p> Defeat all of Jedi and you and only you will be the last true Jedi. May the FORCE be with you!</p>
+                </div>
+                 <div class="modal-footer">
+    <!--     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+        			<button type="button" class="btn btn-primary block-center" data-dismiss="modal">Prepare for Battle!</button>
+      			</div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 <div  id='wrap'>
     <!-- Title Header -->
     <header>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-                    <h2> STAR WARS RPG GAME!!</h2>
+                    <h1> STAR WARS RPG GAME!!</h1>
                 </div>
             </div>
         </div>
     </header>
-    <!-- Took out container until get it to override -->
+   
+   <!-- Battle Zone Area -->
     <div class="container-fluid gameplaySection">
-                <div class="row">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                <!-- Select your champion header -->
+                <h4> Select Your Jedi</h4>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div id="characterList">
+                       <!--  <p> Luke </p>
+                        This is the row where the characters live initially before being chosen and be dynamically placed here
+                        <img src="assets/images/luke.jpg">
+                        <p> 180 </p> -->
+                </div>
+            </div>
+        </div>
+            <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                <!-- Select your enemy aligned right header -->
+                <h4> Enemies To Attack</h4>
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div id="enemyList">
+                        <!-- This is where your enemies will be dynamically updated after a selection is made in your character-->
+                        <p> Enemy list</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+            <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 text-center">
                     <h3> Battle Zone! </h3>
                 </div>
             </div>
             <div class="row">
                 <!-- This is the Battle Area -->
-                <div class="col-sm-12 col-md-14 col-lg-4 text-center">
+                <div class="col-sm-12 col-md-4 col-lg-4 text-center">
                     <h2> Your Jedi!</h2>
                     <div class="col-sm-12 col-md-12 col-lg-12 ">
                     <!-- When you choose your character this is where it is pushed to -->
@@ -49,6 +97,8 @@
                 		</div>
                 		<!-- This the area where the text gets updated as you play the game -->
                 		<div id="attackText"> </div>
+                		<!-- using this tag to create a button and use it to reset -->
+                		<div id="gameOver"></div>
                 	</div>
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-4 text-center">
@@ -65,31 +115,6 @@
                     </div>
                 </div>
             </div>
-            <hr>  
-        <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-6 text-center">
-                <!-- Select your champion header -->
-                <h4> Select Your Jedi</h4>
-                <div class="col-sm-12 col-md-12 col-lg-12">
-                    <div id="characterList">
-                       <!--  <p> Luke </p>
-                        This is the row where the characters live initially before being chosen and be dynamically placed here
-                        <img src="assets/images/luke.jpg">
-                        <p> 180 </p> -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-6 text-center">
-                <!-- Select your enemy aligned right header -->
-                <h4> Enemies To Attack</h4>
-                <div class="col-sm-12 col-md-12 col-lg-12">
-                    <div id="enemyList">
-                        <!-- This is where your enemies will be dynamically updated after a selection is made in your character-->
-                        <p> Enemy list</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 	<div id="push"> </div>

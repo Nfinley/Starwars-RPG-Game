@@ -1,8 +1,22 @@
+
+/* Google Fonts to choose fron: 
+font-family: 'Press Start 2P', cursive;
+font-family: 'Share Tech Mono', monospace;
+font-family: 'VT323', monospace;*/
+
+
 body {
 	font-family: 'Share Tech Mono', monospace;
 	color: white;
 
 
+}
+.modal-body {
+	color: black;
+}
+
+.modal-header {
+	color: black;
 }
 
 #wrap {
@@ -20,12 +34,6 @@ body {
 
 
 /*Classes available*/
-
-/*.container {
-	width: 100%;
-}*/
-
-
 .center-block {
   display: block;
   margin-left: auto;
@@ -36,11 +44,10 @@ body {
 .characterContainer {
 	display: inline-block;
 	width: 200px;
-	border: solid 4px green;
+	border: solid 4px black;
 	margin-bottom: 10px;
 	margin-right: 10px;
-/*	background-color: white;*/
-	border-radius: 5px;
+	border-radius: 7px;
 	
 }
 
@@ -60,17 +67,14 @@ body {
 
 }
 
-/*ul {
-	display: inline-block;
-}*/
 .enemyContainer {
 	display: inline-block;
 	/*height: 200px;*/
 	width: 200px;
-	border: solid 4px green;
+	border: solid 4px black;
 	margin-bottom: 10px;
 	background-color: black;
-	border-radius: 5px;
+	border-radius: 7px;
 }
 
 
@@ -95,19 +99,6 @@ img {
 	
 }
 
-.characterClick {
-
-},
-
-.enemyContainer {
-
-},
-
-.enemyClick {
-
-},
-
-
 #characterList {
 
 },
@@ -126,11 +117,5 @@ img {
 
 
 
-/*h1 {
-	color: white;
-}
 
-/*font-family: 'Press Start 2P', cursive;
-font-family: 'Share Tech Mono', monospace;
-font-family: 'VT323', monospace;*/
 

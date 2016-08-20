@@ -5,6 +5,18 @@
 // ...also the fridge game for data let to pass letters and the crystal game to assign numbers and use counters. Also calculator game from 4.3
 //  2. Remove $ signs
 // 3. re-write some in jQuery
+// 4. add the 'No enemy here' text when attack button is clicked
+// 5. Add reset button when game is over and when loss occurs
+// 6. figure out how to implement the  'wounded' piece
+// 7. Make character and enemey list display span horizontal across the screen
+// 8.  Check line 317 and 214 for the game over properties to make sure they work
+// 9. Check my modal piece works on line 150 and check html
+// 10. Look at doing a static pic
+
+// Improvements to make
+// Update the images to not show the background colors and spread across entire div
+// change text color to white and bold and then overlay over the image
+// change the positioning so that it flows better
 
 
 // Variables
@@ -132,10 +144,11 @@ function reset() {
 $(document).ready(function() {
 	reset();
 	// gets the link for the theme song to be played in the background
-	 // var audioElement = document.createElement('audio');
-	 // audioElement.autoplay = true;
-	 // audioElement.loop = true;
-  //    audioElement.setAttribute('src', 'assets/audio/starwars.m4a');
+	 var audioElement = document.createElement('audio');
+	 audioElement.autoplay = true;
+	 audioElement.loop = true;
+     audioElement.setAttribute('src', 'assets/audio/starwars.m4a');
+  	$('#myModal').modal('show');
 
 	function render() {
 		// setting variables set to id tags with html elements for easy reference later
@@ -189,6 +202,10 @@ $(document).ready(function() {
 			// Removes the enemy character after you win.
 			$('#yourEnemy').empty(gameObj.currentEnemy);
 		}
+		if (gameObj.attackOccurred = false) {
+			$('#attackText').html("No enemy to fight, select an enemy");
+			// 5. If user continues to press attack button it displays the text "No enemy to fight, select an enemy."
+		}
 		if (gameObj.lossOccurred) {
 			// Displays loss text
 			$lossText.html($lossTemplate({gameObj: gameObj}));
@@ -196,13 +213,24 @@ $(document).ready(function() {
 		if (gameObj.wounded){
 			$('#attackText').html("You are seriously wounded. GAME OVER!");
 		}
+		// Update this to show correc wording and make sure it works
+		if (gameObj.gameOver) {
+			// creates the reset button to start the game over
+			var b = $('<button>');
+			b.addClass('btn-primary waves-effect waves-light btn-md');
+			$('#gameOver').append(b);
+		// 	$('#gameOver').on('click', function({
+		// 		reset();
+		// 	});
+		// }
+		}
 
     }
 
     //STAGE 2: Selecting your character 
     $('#characterList').on('click', '.characterContainer', function(e) {
     	// pause current audio to allow for battle sounds
-    	// audioElement.pause();
+    	audioElement.pause();
 		// TODO: set the AUDIO to saberon.mp3
 
     	// references the characterList
@@ -218,9 +246,9 @@ $(document).ready(function() {
     	// This renders and updates all of the html elements 
     	render();
     	// adds a sound to selecting character
-    	// var $audioCharacter = document.createElement('audio');
-     //                $audioCharacter.setAttribute('src', gameObj.characherSelectSound);
-     //                $audioCharacter.play();
+    	var $audioCharacter = document.createElement('audio');
+                    $audioCharacter.setAttribute('src', gameObj.characherSelectSound);
+                    $audioCharacter.play();
     });
 
     // STAGE 3: select your enemy
@@ -239,9 +267,9 @@ $(document).ready(function() {
     	// This renders and updates all of the html elements 
     	render();
     	// adds a sound to selecting character
-    	// var $audioCharacter = document.createElement('audio');
-     //                $audioCharacter.setAttribute('src', gameObj.characherSelectSound);
-     //                $audioCharacter.play();
+    	var $audioCharacter = document.createElement('audio');
+                    $audioCharacter.setAttribute('src', gameObj.characherSelectSound);
+                    $audioCharacter.play();
     });
 
     // STAGE 4: GAME PLAY. Click on ATTACK
@@ -265,9 +293,9 @@ $(document).ready(function() {
     	yourCharacter.healthPoints = yourCharacter.healthPoints - currentEnemy.counterAttackPower;
     	console.log ("enenemy health points: " + currentEnemy.healthPoints + ' your health: ' + yourCharacter.healthPoints);
 
-    	// var $audioBattle = document.createElement('audio');
-     //                $audioBattle.setAttribute('src', gameObj.battleSoundPick());
-     //                $audioBattle.play();
+    	var $audioBattle = document.createElement('audio');
+                    $audioBattle.setAttribute('src', gameObj.battleSoundPick());
+                    $audioBattle.play();
                     
     	// STARTED HERE
 
@@ -305,14 +333,11 @@ $(document).ready(function() {
 			else if (gameObj.characterArrayList.length == -1){
 				gameObj.gameOver = true;
 				gameObj.winOccurred = false;
-				// write game over wording
-				// need to add a reset button
-				// Make a reset button and make it equal to the reset function
+				$('#attackText').html("You are now a true Jedi Master! May the FORCE be with YOU! GAME OVER!! ");
+				// test game over writing
 				// Need to figure out why when a new enemy is clicked the second time it automatically sets the the attack wording
 
 			}  
-
-			// How do I call the on click again up here or does it need to be below
 				
 	    	
     	}
@@ -322,6 +347,7 @@ $(document).ready(function() {
     		gameObj.lossOccurred = true;
     		console.log('Entered the loss occurred section');
     		gameObj.attackOccurred = false; 
+    		gameObj.gameOver = true; 
     		// set reset button
     	}
     	render();
