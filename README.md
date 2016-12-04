@@ -1,3 +1,7 @@
-# week-4-game
+# Starwars-RPG-Game
 
-This is week 4 homework assignment for the UT Bootcamp. In this assignment I have created a Star Wars RPG game.
+A simple single-player Star Wars RPG game, where users can choose their character and battle all enemies. It is built in using the Bootstrap framework, Underscore.js templating, Javascript and Jquery.
+
+
+----
+Created as a part of the UT Coding Bootcamp. 
